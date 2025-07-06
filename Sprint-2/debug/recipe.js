@@ -11,5 +11,6 @@ const recipe = {
 };
 
 console.log(`${recipe.title} serves ${recipe.serves}
-  ingredients:
-${recipe}`);
+ingredients:
+${recipe.ingredients.join("\n")}`);
+
