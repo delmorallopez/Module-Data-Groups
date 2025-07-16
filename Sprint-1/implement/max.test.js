@@ -85,4 +85,19 @@ describe("find Max", () => {
     expect(result).toEqual(-Infinity);
   });
 
+  it("Given an array with one letter, return that letter", () => {
+    const list = ["A"];
+    const result = findMax(list);
+    expect(result).toEqual(-Infinity);
   });
+
+  it("Given an array with one letter and number, return the number", () => {
+    const list = ["A", 99];
+    const result = findMax(list);
+    expect(result).toEqual(99);
+  });
+
+  });
+
+  //findMax(["A"]);
+  //findMax(["A", 99]);

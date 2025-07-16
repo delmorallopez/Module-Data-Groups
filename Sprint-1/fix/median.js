@@ -15,19 +15,19 @@ function calculateMedian(list) {
     return null
   }
   
-console.log("List:",list)
 
 // Get an array with only numbers 
 const numbersOnly = list.filter(item => typeof item === 'number' && Number.isFinite(item));
 // Order the numbers array
 const sorted = numbersOnly.sort((a, b) => a - b);
 
-console.log(sorted); // [1, 2, 3, 4]
+//console.log(sorted); // [1, 2, 3, 4]
 
 
-if (Array.isArray(sorted) && sorted.every(item => typeof item === 'string' || item === null || item == undefined)) {
+if (numbersOnly.length === 0) {
   return null;
 }
+
 
   // Take the middle number 
   const middleIndex = Math.floor(numbersOnly.length / 2);

@@ -1,6 +1,6 @@
 function dedupe(list) {
    //First test should return empty string
-   if (list.length < 1) {
+   if (list.length == 0) {
     return list;
   }
 

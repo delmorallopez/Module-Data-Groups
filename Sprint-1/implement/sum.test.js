@@ -26,7 +26,7 @@ it("Given an empty array", () => {
 it("Given an array with just one number", () => {
     const list = [1];
     const result = sum(list);
-    expect(result).toEqual([1]);  
+    expect(result).toEqual(1);  
   });
 
 // Given an array containing negative numbers
@@ -41,19 +41,19 @@ it("Given an array containing negative numbers", () => {
 // Given an array with decimal/float numbers
 // When passed to the sum function
 // Then it should return the correct total sum
-it("Given an array with decimal/float numbers", () => {
+  it("Given an array with decimal/float numbers", () => {
     const list = [1, 1.2, -5.2, 5];
     const result = sum(list);
-    expect(result).toEqual(2);  
+    expect(result).toBeCloseTo(2, 5);  // Use tolerance for floating point comparison
   });
-
+  
 // Given an array containing non-number values
 // When passed to the sum function
 // Then it should ignore the non-numerical values and return the sum of the numerical elements
 it("Given an array containing non-number values", () => {
     const list = [1, 2.2, -5.2, 5, "Jesus", null];
     const result = sum(list);
-    expect(result).toEqual(3);  
+    expect(result).toBeCloseTo(3, 5);  
   });
 
 // Given an array with only non-number values
@@ -61,6 +61,12 @@ it("Given an array containing non-number values", () => {
 // Then it should return the least surprising value given how it behaves for all other inputs
 it("Given an array with only non-number values, return the least surprising value given how it behaves for all other inputs", () => {
     const list = ["London", "Hello", "CYF" , "Zebra"];
+    const result = sum(list);
+    expect(result).toEqual(0);
+  });
+
+  it("Given an array with only one non-number values, return 0", () => {
+    const list = ["A"];
     const result = sum(list);
     expect(result).toEqual(0);
   });
