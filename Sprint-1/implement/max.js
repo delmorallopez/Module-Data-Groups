@@ -4,7 +4,7 @@ function findMax(elements) {
   }
 
   // Filter only numbers
-  const numericElements = elements.filter(el => typeof el === "number");
+  const numericElements = elements.filter(el => Number.isFinite(el));
 
   if (numericElements.length === 0) {
     return -Infinity;
