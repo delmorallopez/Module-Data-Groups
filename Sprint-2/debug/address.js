@@ -6,7 +6,7 @@
 
 // When we use a Object and we want to extract any of the elements we don't refers them like a array [0] (position)
 // We can use the name of the object and follow the dot and the name of the element, with that we can extract the 
-// value of the element
+// value of the element. 
 
 const address = {
   houseNumber: 42,

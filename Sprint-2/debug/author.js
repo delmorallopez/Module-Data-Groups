@@ -18,8 +18,3 @@ const author = {
 console.log(Object.values(author)); 
 
 
-/*for (const value of author) {
-  console.log(value);
-}*/
-
-
