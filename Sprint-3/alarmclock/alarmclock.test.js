@@ -1,5 +1,5 @@
 /* ======= TESTS - DO NOT MODIFY ===== 
-There are some Tests in this file that will help you work out if your code is working.
+There are some Tests in this file that will help you work out if your code is working. No need to change the code in this file.
 */
 
 const path = require("path");

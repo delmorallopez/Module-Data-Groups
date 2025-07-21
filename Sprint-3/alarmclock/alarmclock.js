@@ -66,11 +66,11 @@ function setup() {
 }
 
 function playAlarm() {
-  audio.play();
+  audio.play(); // Play the alarm sound
 }
 
 function pauseAlarm() {
-  audio.pause();
+  audio.pause();  // Stop the alarm sound
 }
 
 window.onload = setup;
