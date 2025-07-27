@@ -518,6 +518,8 @@ function autoGenerateQuotes() {
   }
 }
 
+
+
 // Add event listener to the button new quote
 document.getElementById("new-quote").addEventListener("click", displayQuote);
 
