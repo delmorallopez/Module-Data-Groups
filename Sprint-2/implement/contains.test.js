@@ -88,3 +88,46 @@ test("contains returns false for invalid parameter", function () {
 
 });
 
+
+test("contains returns true for toString", function () {
+
+  let obj = {}, propertyName = "toString";
+
+  const currentOutput = contains(obj, propertyName);
+  const targetOutput = false;
+
+  expect(currentOutput).toEqual(targetOutput);
+
+});
+
+test("contains returns false first parameter is an array", function () {
+  const input = ["A", "B", "C"];
+
+  const currentOutput = contains(input, "1");
+  const targetOutput = false;
+
+  expect(currentOutput).toEqual(targetOutput);
+
+});
+
+
+test("contains returns True Empty string can also be a key", function () {
+  const input = { "": "Boo" };
+
+  const currentOutput = contains(input, "");
+  const targetOutput = true;
+
+  expect(currentOutput).toEqual(targetOutput);
+
+});
+
+test("contains returns False even though type of null is equal to object", function () {
+
+  const input = { null: "null" };
+
+  const currentOutput = contains(input, "");
+  const targetOutput = false;
+
+  expect(currentOutput).toEqual(targetOutput);
+
+});

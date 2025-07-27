@@ -28,7 +28,9 @@
 */
 
 function countWords(querystring) {
-  const wordCounts = {};
+  
+  const wordCounts =  Object.create(null); // No inherited properties;
+ 
 
  // Remove punctuation and convert to lowercase for consistency
  const cleanedStr = str.replace(/[.,!?]/g, "").toLowerCase();

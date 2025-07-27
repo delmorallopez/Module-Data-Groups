@@ -9,7 +9,7 @@ function tally(items) {
       throw new Error("Input must be an array");
     }
   
-    const counts = {};
+    const counts = Object.create(null); // No inherited properties
   
     for (const item of items) {
       counts[item] = (counts[item] || 0) + 1;
@@ -17,7 +17,6 @@ function tally(items) {
   
     return counts;
   }
-  
   
 
 module.exports = tally;
