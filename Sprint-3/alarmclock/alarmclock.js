@@ -1,5 +1,5 @@
-let timeSetup = document.querySelector("#alarmSet");
-let timeCountdown = document.querySelector("#timeRemaining");
+const timeSetup = document.querySelector("#alarmSet");
+const timeCountdown = document.querySelector("#timeRemaining");
 let countdownInterval;
 
 // Shared display update function
@@ -9,32 +9,35 @@ function updateDisplay(seconds) {
   timeCountdown.innerText = `Time Remaining: ${minutes}:${secs}`;
 }
 
-// Shared validation function
-function isValidInput(value) {
-  const num = parseInt(value.trim(), 10);
-  return !isNaN(num) && num > 0 ? num : null;
+
+function parsePositiveInteger(value) {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+
+  // Check if it's all digits (no letters or symbols)
+  if (!/^\d+$/.test(trimmed)) return null;
+
+  const num = Number(trimmed);
+  return num > 0 ? num : null;
 }
 
 function setAlarm() {
-  const totalSeconds = isValidInput(timeSetup.value);
+  const totalSeconds = parsePositiveInteger(timeSetup.value);
 
   if (totalSeconds === null) {
     timeCountdown.innerText = "Please enter a valid number of seconds.";
     document.body.style.backgroundColor = "";
     return;
   }
-
+   
+  startCountdown(totalSeconds); // Start the countdown timer
   updateDisplay(totalSeconds);
   document.body.style.backgroundColor = "";
+  
+
 }
 
-function startCountdown() {
-  let totalSeconds = isValidInput(timeSetup.value);
-
-  if (totalSeconds === null) {
-    timeCountdown.innerText = "Time Remaining: 00:00";
-    return;
-  }
+function startCountdown(totalSeconds) {
 
   clearInterval(countdownInterval); // Stop previous countdown
   updateDisplay(totalSeconds);      // Show first tick immediately
@@ -62,7 +65,7 @@ var audio = new Audio("alarmsound.mp3");
 function setup() {
   document.getElementById("set").addEventListener("click", () => {
   setAlarm();  // Sets the initial time display
-  startCountdown(); // Starts the actual countdown
+  //startCountdown(); // Starts the actual countdown
   });
 
   document.getElementById("stop").addEventListener("click", () => {
