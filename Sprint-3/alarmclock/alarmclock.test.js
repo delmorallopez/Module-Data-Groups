@@ -1,5 +1,5 @@
 /* ======= TESTS - DO NOT MODIFY ===== 
-There are some Tests in this file that will help you work out if your code is working. No need to change the code in this file.
+There are some Tests in this file that will help you work out if your code is working.
 */
 
 const path = require("path");
@@ -8,7 +8,7 @@ const { JSDOM } = require("jsdom");
 let page = null;
 
 beforeEach(async () => {
-  page = await JSDOM.fromFile(path.join(__dirname, "alarmclockapp.html"), {
+  page = await JSDOM.fromFile(path.join(__dirname, "index.html"), {
     resources: "usable",
     runScripts: "dangerously",
   });

@@ -1,64 +1,4 @@
-timeSetup = document.querySelector("#alarmSet"); // Access to alarmset
-
-timeCountdown = document.querySelector("#timeRemaining"); // Access to timeRemaining
-
-let countdownInterval; // Variable to setup to 0 the countdown
-
-
-function setAlarm() {
-  const rawInput = timeSetup.value.trim(); // Remove surrounding spaces
-  const totalSeconds = parseInt(rawInput, 10);
-
-  // Validate the input
-  if (isNaN(totalSeconds) || totalSeconds < 0) {
-    timeCountdown.innerText = "Please enter a valid number of seconds.";
-    document.body.style.backgroundColor = "";
-    return;
-  }
-
-  const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
-  const seconds = String(totalSeconds % 60).padStart(2, "0");
-
-  timeCountdown.innerText = `Time Remaining: ${minutes}:${seconds}`;
-  document.body.style.backgroundColor = ""; // Reset background
-}
-
-
-function startCountdown() {
-
-  let totalSeconds = parseInt(timeSetup.value, 10);  //Convert the the string seconds to a number
-
-  if (isNaN(totalSeconds) || totalSeconds <= 0) {
-    timeCountdown.innerText = "Time Remaining: 00:00";   // Return if the input is not a number or less than or equal to 0
-    return;
-  }
-
-  clearInterval(countdownInterval); // Stop previous countdown if any
-
- // Display the first time immediately
-   const updateDisplay = () => {
-   const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
-   const seconds = String(totalSeconds % 60).padStart(2, "0");
-   timeCountdown.innerText = `Time Remaining: ${minutes}:${seconds}`;
-};
-
-    updateDisplay(); // Show first tick instantly   
-
-    countdownInterval = setInterval(() => {
-      totalSeconds--;
-  
-      if (totalSeconds < 0) {
-        clearInterval(countdownInterval);
-        timeCountdown.innerText = "Time's up!";
-        document.body.style.backgroundColor = "#ff4c4c";
-        playAlarm();
-        return;
-      }
-  
-      updateDisplay();
-    }, 1000);
-  }
-
+function setAlarm() {}
 
 // DO NOT EDIT BELOW HERE
 
@@ -66,8 +6,7 @@ var audio = new Audio("alarmsound.mp3");
 
 function setup() {
   document.getElementById("set").addEventListener("click", () => {
-  setAlarm();  // Sets the initial time display
-  startCountdown(); // Starts the actual countdown
+    setAlarm();
   });
 
   document.getElementById("stop").addEventListener("click", () => {
@@ -76,12 +15,11 @@ function setup() {
 }
 
 function playAlarm() {
-  audio.play(); // Play the alarm sound
+  audio.play();
 }
 
 function pauseAlarm() {
-  audio.pause();  // Stop the alarm sound
+  audio.pause();
 }
 
 window.onload = setup;
-
