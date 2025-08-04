@@ -25,37 +25,39 @@ function setAlarm() {
 
 
 function startCountdown() {
-  let totalSeconds = parseInt(timeSetup.value, 10);
+
+  let totalSeconds = parseInt(timeSetup.value, 10);  //Convert the the string seconds to a number
 
   if (isNaN(totalSeconds) || totalSeconds <= 0) {
-    timeCountdown.innerText = "Time Remaining: 00:00";
+    timeCountdown.innerText = "Time Remaining: 00:00";   // Return if the input is not a number or less than or equal to 0
     return;
   }
 
-  clearInterval(countdownInterval); // Stop previous countdown
+  clearInterval(countdownInterval); // Stop previous countdown if any
 
-  const updateDisplay = () => {
-    const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
-    const seconds = String(totalSeconds % 60).padStart(2, "0");
-    timeCountdown.innerText = `Time Remaining: ${minutes}:${seconds}`;
-  };
+ // Display the first time immediately
+   const updateDisplay = () => {
+   const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+   const seconds = String(totalSeconds % 60).padStart(2, "0");
+   timeCountdown.innerText = `Time Remaining: ${minutes}:${seconds}`;
+};
 
-  updateDisplay(); // Show first tick immediately
+    updateDisplay(); // Show first tick instantly   
 
-  countdownInterval = setInterval(() => {
-    if (totalSeconds <= 0) {
-      clearInterval(countdownInterval);
-      timeCountdown.innerText = "Time's up!";
-      document.body.style.backgroundColor = "#ff4c4c";
-      playAlarm();
-      return;
-    }
-
-    totalSeconds--; // Decrement only after the check
-    updateDisplay();
-  }, 1000);
-}
-
+    countdownInterval = setInterval(() => {
+      totalSeconds--;
+  
+      if (totalSeconds < 0) {
+        clearInterval(countdownInterval);
+        timeCountdown.innerText = "Time's up!";
+        document.body.style.backgroundColor = "#ff4c4c";
+        playAlarm();
+        return;
+      }
+  
+      updateDisplay();
+    }, 1000);
+  }
 
 
 // DO NOT EDIT BELOW HERE
