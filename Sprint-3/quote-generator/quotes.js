@@ -505,7 +505,6 @@ function displayQuote() {
   document.getElementById("author").textContent = `— ${randomQuote.author}`;
 }
 
-
 // Show one on page load
 displayQuote();
 
